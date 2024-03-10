@@ -24,6 +24,5 @@ app.use((req, _res, next) => {
 app.use("/videos", videoRoutes);
 
 app.listen(PORT, function() {
-    console.log(PORT)
-    console.log("Server is now listening at " + CORS_ORIGIN);
+    console.log(`Server is now listening at ${PORT}`)
 });

@@ -1,6 +1,7 @@
 const express = require('express');
 const fs = require('fs');
 const router = express.Router();
+const { v4: uuidv4 } = require('uuid');
 
 router.use(express.json());
 
@@ -38,17 +39,17 @@ router.route("/:videoId")
 router.route("/upload")
     .post((req, res) => {
         const {
-            image,
             title,
-            description
+            description,
+            image
         } = req.body;
 
         if (!image || !title || !description) {
             return res.status(400).json({error: "You're missing required fields!"});
         }
         const newVideo = {
-            id: uuid.v4(),
-            image: "../public/images/Upload-video-preview.jpg",
+            id: uuidv4(),
+            image,
             title,
             description
         }
